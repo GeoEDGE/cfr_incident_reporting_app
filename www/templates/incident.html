@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+
+<head>
+    <title>IncidentApp</title>
+</head>
+<ion-view>
+    <ion-content ng-controller="IncidentController" padding="true">
+        <div class="wrapper wrapper-overflow-hidden" style="height:auto;padding:0; background-color: #e1e1e1">
+
+            <form class="pure-form pure-form-aligned ng-pristine" enctype="multipart/form-data" id="form" name="form" novalidate autocomplete="off" ng-model="form" ng-class="{'submitted': submitted}">
+                <fieldset>
+                    <br>
+                    <br>
+                    <div class="form-group">
+                        <!--disasterType Dropdown-->
+                        <div class="col-lg-12">
+                            <label class="col-md-6" style="padding-left:0;">{{disaster_type}}</label>
+                            <select id="select" style="color:#000;" name="singleSelect" ng-model="data.singleSelect" class="form-control" ng-change="selectedDisaster(data.singleSelect)" ng-required="true">
+                                <option value="" selected="true">{{drop_down_select_display}}</option>
+                                <option ng-if="setlang=='sinhala'" ng-repeat="obj in data.list | orderBy:'+sinhala'" value="{{obj.id}}">{{obj.sinhala}}
+                                </option>
+                                <option ng-if="setlang=='english'" ng-repeat="obj in data.list | orderBy:'+english'" value="{{obj.id}}">{{obj.english}}
+                                </option>
+                                <option ng-if="setlang=='tamil'" ng-repeat="obj in data.list | orderBy:'+tamil'" value="{{obj.id}}">{{obj.tamil}}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="field-message" ng-messages="form.singleSelect.$error " ng-if='submitted && form.singleSelect.$invalid' ng-cloak>
+                                <div ng-message="required">{{disaster_error_msg}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--closeEnd questions-->
+                    <rn-stepper template="formTemplate" ng-model="formData" language_select_dropdown="'{{drop_down_select_display}}'"></rn-stepper>
+                    <div class="form-group has-feedback">
+                        <label class="col-md-6">{{description}}</label>
+                        <div class="col-lg-12">
+                            <textarea class="form-control" rows="3" style="color:#000;" id="textArea" ng-model="discription">
+                            </textarea>
+                            <i class="glyphicon glyphicon-list-alt form-control-feedback" style="margin-right:20px;"></i>
+                        </div>
+                    </div>
+                    <!--Location-->
+                    <div class="form-group">
+                        <div class="col-lg-12" style="">
+                            <center>
+                                <button class="button button-block btn-info" ng-click="gpsTest()" style="width:"><i class="glyphicon glyphicon-map-marker">{{click_to_get_location}}</i>
+                                </button>
+                            </center>
+                            <div id="map_container">
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <!--address-->
+                    <div class="form-group has-feedback">
+                        <label class="col-md-6">{{gps_location}}</label>
+                        <div class="col-md-12">
+                            <input type="text" id="address" name="address" ng-model="address" class="form-control input-md" style="padding-left:15px" ng-required="true">
+                            <i class="glyphicon glyphicon-envelope form-control-feedback" style="margin-right:20px;"></i>
+                            <div class="field-message" ng-messages="form.address.$error" ng-if='submitted && form.address.$invalid' ng-cloak>
+                                <div ng-message="required">{{location_error_msg}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <!--name-->
+                    <div class="form-group has-feedback">
+                        <label class="col-md-6">{{name}}</label>
+
+                        <div class="col-lg-12">
+                            <input type="text" name="name" class="form-control" id="name" ng-model="username" style="padding-left:15px">
+                            <i class="glyphicon glyphicon-user form-control-feedback" style="margin-right:20px;"></i>
+                        </div>
+                    </div>
+                    <!--contactno-->
+                    <div class="form-group has-feedback">
+                        <label class="col-md-6">{{contact_no}}</label>
+                        <div class="col-lg-12">
+                            <input type="number" name="contactno" ng-pattern="/^\d{0,9}(\.\d{1,9})?$/" class="form-control" id="inputcontactno" ng-model="contactno" style="padding-left:15px" ng-minlength="10" ng-maxlength="10">
+                            <i class="glyphicon glyphicon-earphone form-control-feedback" style="margin-right:20px;"></i>
+                            <div class="field-message" ng-messages="form.contactno.$error" ng-if='form.contactno.$invalid' ng-cloak>
+                                <div ng-message="number">{{contact_no_validity_msg}}</div>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <!--add Images-->
+                    <div class="form-group">
+                        <label class="col-md-6">{{inimages}}</label>
+                        <div class="col-lg-12">
+                            <button class="btn-warning btn-circle btn-xl" ng-click="addImage()"><i class="glyphicon glyphicon-camera"></i>
+                            </button>
+                            <button class="btn-info btn-circle btn-xl" ng-click="choosePhoto()"><i class="glyphicon glyphicon-picture"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <style>
+                    </style>
+                    <!--Image Slider-->
+
+                    <div class="row" style="overflow:auto;">
+                        <div horizontal-slider class="horizontal-slider;col-md-12;" ng-repeat="img in images" style="padding-left:10px;">
+                            <div class="img-wrap">
+                                <span class="close" ng-click="click($index)">&times;</span>
+                                <img id="images" ng-src="{{img}}" class="thumbnail" style="width:100px;height:100px;float:left;z-index:-1;	">
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <!--Cancel/Submit Data-->
+                        <div class="form-group">
+                            <div class="col-lg-12">
+                                <button class="btn  btn-default"  ng-click="goback()"><i class="glyphicon glyphicon-ban-circle">{{cancel}}</i>
+                                </button>
+                                <button class="btn btn-success" id="submit" ng-click="sendfunction()"><i class="glyphicon glyphicon-triangle-right" ng-click="submitted=true" ng-keyup="submitted=false"> {{submit}}</i>
+                                </button>
+                                <br>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </ion-content>
+</ion-view>

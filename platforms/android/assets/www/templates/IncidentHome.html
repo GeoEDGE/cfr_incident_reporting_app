@@ -1,0 +1,41 @@
+<ion-view>
+  <ion-content ng-controller="HomeController" padding="true">
+      <div class="wrapper wrapper-gradient wrapper-no-padding wrapper-darkest wrapper-overflow-hidden" style="height:auto;">
+         <div class="overlay"></div>
+         <div class="container" id="bck-img10">
+            <div class="row">
+               <div class="col-xs-12 wrapper-xxl">
+                  <div class="collapse navbar-collapse" data-hover="dropdown" data-animations="fadeInDown fadeInRight fadeInUp fadeInLeft">
+                     <ul class="nav navbar-nav">
+                     </ul>
+                  </div>
+                  <!--Language Dropdowm-->
+                  <center>
+                     <div class="btn-group" id="drop">
+                        <select class="form-control" name="language" id="language" ng-model="language" ng-required="true" ng-change="showSelectValue(language)">
+                           <option value="en">English</option>
+                           <option value="si">සිංහල</option>
+                           <option value="ta">தமிழ்</option>
+                        </select>
+                     </div>
+                  </center>
+                  <center>
+                     <br>
+                     <h2 class="headline" id="headline">{{incident_report_header}}</h2>
+                     <p class="lead" id="lead">{{incident_report_quote}}</p>
+                     <br>
+                     <br>
+                     <br>
+                     <br>
+                     <br>
+                     <br>
+                     <!--Inform Button-->
+                     <a class="btn btn-lg btn-success" ng-href="#incident/{{language}}"><i class="fa fa-hand-o-down"></i>
+                     {{inform_disaster}}</a>
+                  </center>
+               </div>
+            </div>
+         </div>
+      </div>
+   </ion-content>
+</ion-view>

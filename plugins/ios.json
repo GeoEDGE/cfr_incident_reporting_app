@@ -1,0 +1,70 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "com.couchbase.lite.phonegap": {
+            "PACKAGE_NAME": "com.ionicframework.CFRData"
+        },
+        "com.joandilee.imeiplugin": {
+            "PACKAGE_NAME": "com.ionicframework.CFRData"
+        },
+        "cordova-plugin-camera": {
+            "PACKAGE_NAME": "com.ionicframework.CFRData"
+        },
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "com.ionicframework.CFRData"
+        },
+        "cordova-plugin-image-picker": {
+            "PACKAGE_NAME": "com.ionicframework.CFRData"
+        },
+        "cordova-plugin-inappbrowser": {
+            "PACKAGE_NAME": "com.ionicframework.CFRData"
+        },
+        "cordova-plugin-network-information": {
+            "PACKAGE_NAME": "com.ionicframework.CFRData"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "com.ionicframework.CFRData"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.ionicframework.CFRData"
+        },
+        "cordova-sqlite-storage": {
+            "PACKAGE_NAME": "com.ionicframework.CFRData"
+        },
+        "cordova.plugins.diagnostic": {
+            "PACKAGE_NAME": "com.ionicframework.CFRData"
+        },
+        "cordova-plugin-file-transfer": {
+            "PACKAGE_NAME": "com.ionicframework.CFRData"
+        },
+        "cordova-plugin-actionsheet": {
+            "PACKAGE_NAME": "com.ionicframework.CFRData"
+        },
+        "cordova-plugin-background-mode": {
+            "PACKAGE_NAME": "com.ionicframework.CFRData"
+        },
+        "ionic-plugin-keyboard": {
+            "PACKAGE_NAME": "com.ionicframework.CFRData"
+        }
+    },
+    "dependent_plugins": {
+        "com.ionic.keyboard": {
+            "PACKAGE_NAME": "com.ionicframework.CFRData"
+        },
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "com.ionicframework.CFRData"
+        },
+        "cordova-plugin-geolocation": {
+            "PACKAGE_NAME": "com.ionicframework.CFRData"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "com.ionicframework.CFRData"
+        }
+    }
+}
