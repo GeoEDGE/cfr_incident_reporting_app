@@ -22,12 +22,6 @@ After installing npm you will be able to install Ionic Framwork. Execute the fol
     sudo npm install -g cordova ionic
     
     sudo npm install -g ionic
-    
-• Install an editor to view or edit the code
-
-Eg: Atom Editor for windows
-
-     http://flight-manual.atom.io/getting-started/sections/installing-atom/
      
 •Run the Project in android device
 
